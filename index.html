@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fffaf2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Smart Cart">
+  <title>Kollin's Smart Cart</title>
+  <meta name="description" content="A private voice-first grocery list that remembers the exact products you like.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Smart Cart home">
+        <span class="brand-mark" aria-hidden="true">K</span>
+        <span>Smart Cart</span>
+      </a>
+      <button class="icon-button" id="settingsBtn" aria-label="Manage preferred products" title="Preferred products">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.03 1.56V21h-4v-.08A1.7 1.7 0 0 0 8.96 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3v-4h.08A1.7 1.7 0 0 0 4.6 8.94a1.7 1.7 0 0 0-.34-1.88L4.2 7l2.83-2.83.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 10 3.02V3h4v.08a1.7 1.7 0 0 0 1.03 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06L19.8 7l-.06.06a1.7 1.7 0 0 0-.34 1.88A1.7 1.7 0 0 0 20.96 10H21v4h-.08A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span></span> YOUR PRIVATE SHOPPING ASSISTANT</div>
+        <h1>What do you<br><em>need today?</em></h1>
+        <p>Say it naturally. I’ll match the exact products you’ve taught me.</p>
+
+        <div class="voice-card">
+          <button class="mic" id="micBtn" aria-label="Start voice input">
+            <span class="pulse"></span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Z"/><path d="M19 11v1a7 7 0 0 1-14 0v-1M12 19v3M8 22h8"/></svg>
+          </button>
+          <div>
+            <strong id="voiceTitle">Tap to speak</strong>
+            <span id="voiceHint">“I need milk, bread, and two bananas.”</span>
+          </div>
+        </div>
+
+        <div class="or"><span></span><b>OR TYPE IT</b><span></span></div>
+        <form class="quick-add" id="quickForm">
+          <input id="quickInput" autocomplete="off" placeholder="milk, bread, paper towels…" aria-label="Type grocery items">
+          <button type="submit" aria-label="Add items">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 14-7-4 14-3-6-7-1Z"/></svg>
+          </button>
+        </form>
+        <div class="chips" aria-label="Quick add suggestions">
+          <button data-add="milk">+ Milk</button><button data-add="bread">+ Bread</button><button data-add="eggs">+ Eggs</button>
+        </div>
+      </section>
+
+      <section class="cart-section" id="cartSection">
+        <div class="section-heading">
+          <div><span class="kicker">TODAY’S LIST</span><h2>Your cart</h2></div>
+          <button class="text-button" id="clearBtn">Clear all</button>
+        </div>
+        <div id="cartEmpty" class="empty-state">
+          <div class="empty-icon">✓</div>
+          <strong>Your list is clear</strong>
+          <p>Add something above and I’ll match your favorites.</p>
+        </div>
+        <div id="cartList" class="cart-list"></div>
+
+        <div class="delivery-card" id="deliveryCard" hidden>
+          <div class="delivery-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>
+          </div>
+          <div><strong>Same-day delivery</strong><span>Confirm availability and a delivery time at Walmart</span></div>
+          <span class="ready-dot">READY</span>
+        </div>
+        <button class="checkout" id="checkoutBtn" hidden>
+          Review at Walmart
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <p class="checkout-note" id="checkoutNote" hidden>You’ll approve products, substitutions, delivery time, and payment on Walmart.</p>
+      </section>
+    </main>
+
+    <footer><span>Private by design</span><span>•</span><span>Preferences stay on this device</span></footer>
+  </div>
+
+  <dialog id="preferenceDialog">
+    <form method="dialog" id="preferenceForm">
+      <div class="dialog-head"><div><span class="kicker">TEACH SMART CART</span><h2 id="dialogTitle">Which milk do you like?</h2></div><button value="cancel" class="dialog-close" aria-label="Close">×</button></div>
+      <input type="hidden" id="prefKey">
+      <label>Exact product name<input id="prefName" required placeholder="e.g. Great Value 2% Reduced Fat Milk"></label>
+      <div class="two-col">
+        <label>Size<input id="prefSize" placeholder="e.g. 1 gallon"></label>
+        <label>Usual quantity<input id="prefQty" inputmode="numeric" type="number" min="1" value="1"></label>
+      </div>
+      <label>Walmart product link <span>(optional)</span><input id="prefUrl" inputmode="url" placeholder="https://www.walmart.com/ip/..."></label>
+      <label>Substitution rule<select id="prefSub"><option value="ask">Ask me first</option><option value="similar">Best similar item</option><option value="none">No substitutions</option></select></label>
+      <div class="dialog-actions"><button value="cancel" class="secondary">Not now</button><button value="default" id="savePref" class="primary">Save preference</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="libraryDialog" class="library-dialog">
+    <div class="dialog-head"><div><span class="kicker">YOUR FAVORITES</span><h2>Preferred products</h2></div><button class="dialog-close" id="closeLibrary" aria-label="Close">×</button></div>
+    <p class="dialog-intro">Teach the app once. The next time you say “milk,” it will choose your milk.</p>
+    <div id="preferenceList" class="preference-list"></div>
+    <button id="addPreference" class="primary full">+ Add a preferred product</button>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
