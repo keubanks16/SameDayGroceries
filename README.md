@@ -1,6 +1,6 @@
 # Same Day Groceries
 
-A private, voice-first grocery assistant that remembers preferred products and prepares a same-day Walmart shopping list for final review.
+An installable, private, voice-first grocery web app that remembers preferred products and prepares a same-day Walmart shopping list for final review.
 
 ## What it does
 
@@ -8,6 +8,7 @@ A private, voice-first grocery assistant that remembers preferred products and p
 - Remembers exact product names, sizes, usual quantities, Walmart links, and substitution rules in browser storage.
 - Matches future requests such as “milk” or “bread” to saved preferences.
 - Opens the matched list at Walmart for product, availability, delivery-time, and payment approval.
+- Installs to a phone home screen and keeps the interface available offline as a Progressive Web App (PWA).
 
 ## Important limitation
 
@@ -15,7 +16,7 @@ Walmart does not provide a public consumer checkout API. This app therefore cann
 
 ## Run locally
 
-Serve the files in `dist/` with any static web server. For example:
+Open `index.html` through a static web server, or serve the files in `dist/`. For example:
 
 ```bash
 npx serve dist
