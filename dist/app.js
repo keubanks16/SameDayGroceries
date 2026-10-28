@@ -72,3 +72,4 @@ if(SpeechRecognition){
   rec.onresult=e=>addText(e.results[0][0].transcript); rec.onerror=()=>toast('I couldn’t hear that. Try typing it below.');
 }else{$('#micBtn').addEventListener('click',()=>toast('Voice input is not supported in this browser yet.'))}
 render();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
