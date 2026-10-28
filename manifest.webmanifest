@@ -1,0 +1,18 @@
+{
+  "name": "Kollin's Smart Cart",
+  "short_name": "Smart Cart",
+  "description": "A private voice-first grocery assistant that remembers your preferred products.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf2",
+  "theme_color": "#245c43",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
